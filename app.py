@@ -127,11 +127,11 @@ user_input = st.text_input("Enter the Stock Code", 'AAPL')
 if st.button("Submit"):
     model, scaler = fun(user_input)
     #model, scaler = fun(user_input)
-    date = date.today()
-    date200 = date-timedelta(days = 200)
-    print(date)
+    date_today = date.today()
+    date200 = date_today-timedelta(days = 200)
+    print(date_today)
     apple_quote = pdr.get_data_yahoo(
-        user_input, start=date200, end=date)
+        user_input, start=date200, end=date_today)
     # Create a new dataFrame
     new_df = apple_quote.filter(['Close'])
     # Get the last 60 day closing price values and convert the dataframe to an array
@@ -152,7 +152,7 @@ if st.button("Submit"):
     st.write("# Predicted price:")
     st.write(pred_price[0][0])
     apple_quote2 = pdr.get_data_yahoo(
-        user_input, start=date-timedelta(days=2), end=date)
+        user_input, start=date_today-timedelta(days=2), end=date_today)
     st.write("""
         # Original price:
         """)

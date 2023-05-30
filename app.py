@@ -131,7 +131,7 @@ if st.button("Submit"):
     date200 = date-timedelta(days = 200)
     print(date)
     apple_quote = pdr.get_data_yahoo(
-        user_input, start=date200, end=date-timedelta(days=1))
+        user_input, start=date200, end=date)
     # Create a new dataFrame
     new_df = apple_quote.filter(['Close'])
     # Get the last 60 day closing price values and convert the dataframe to an array
@@ -152,7 +152,7 @@ if st.button("Submit"):
     st.write("# Predicted price:")
     st.write(pred_price[0][0])
     apple_quote2 = pdr.get_data_yahoo(
-        user_input, start=date-timedelta(days=2), end=date-timedelta(days=1))
+        user_input, start=date-timedelta(days=2), end=date)
     st.write("""
         # Original price:
         """)
